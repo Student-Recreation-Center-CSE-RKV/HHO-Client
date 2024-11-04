@@ -171,6 +171,7 @@ import './chaitra.css'; // Importing CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import PreEvents from './pre_events';
+import EventsGallery from './img_gallery';
 
 const Chaitra = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -239,6 +240,7 @@ const Chaitra = () => {
       </section>
 
       <PreEvents />
+      <EventsGallery />
     </>
   );
 };

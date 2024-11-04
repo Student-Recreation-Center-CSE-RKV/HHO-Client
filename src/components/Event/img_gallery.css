@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+.gallery {
+  display: flex;
+  width: calc(80% - 2rem);
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  padding: 20px 0px;
+}
+
+.gallery-item {
+  padding: 0;
+  flex: calc(0.1 + (var(--active-lerp, 0) * 1));
+  transition: flex 0.2s ease;
+  overflow: hidden;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: opacity 0.2s ease;
+  opacity: 1; /* Full opacity by default */
+}
+
+/* When hovering over a gallery item, reduce opacity for all others */
+.gallery-item:hover .gallery-image,
+.gallery-item:focus-within .gallery-image {
+  opacity: 1; /* Keep the hovered image fully opaque */
+}
+
+.gallery:hover .gallery-item:not(:hover) .gallery-image,
+.gallery:focus-within .gallery-item:not(:focus-within) .gallery-image {
+  opacity: 0.5; /* Dim all non-hovered images */
+}
+
+:root {
+  --lerp-0: 1;
+  --lerp-1: 0.5787037;
+  --lerp-2: 0.2962963;
+  --lerp-3: 0.125;
+  --lerp-4: 0.037037;
+  --lerp-5: 0.0046296;
+  --lerp-6: 0;
+}
+
+.gallery-item:hover,
+.gallery-item:focus-within {
+  --active-lerp: var(--lerp-0);
+  z-index: 7;
+}

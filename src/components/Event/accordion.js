@@ -1,46 +1,54 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import "./accordion.css"; // Import the CSS file
+import "./accordion.css";
 
-export const AccordionEl = () => {
+const AccordionMenu = () => {
   const [activeIndex, setActiveIndex] = useState(null);
+
+  const questions = [
+    "What are the events conducted by HHO?",
+    "Why do we celebrate events in our university?",
+    "On which occasions , do we celebrate them?",
+    "What are the events conducted by HHO?",
+    "Why do we celebrate events in our university?",
+  ];
+
+  const contentText = [
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti beatae necessitatibus, libero neque ullam molestiae ab, temporibus cupiditate hic illo blanditiis sapiente amet dolorum eveniet ipsum! Et repellat fugiat saepe!",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti beatae necessitatibus, libero neque ullam molestiae ab, temporibus cupiditate hic illo blanditiis sapiente amet dolorum eveniet ipsum! Et repellat fugiat saepe!",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti beatae necessitatibus, libero neque ullam molestiae ab, temporibus cupiditate hic illo blanditiis sapiente amet dolorum eveniet ipsum! Et repellat fugiat saepe!",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti beatae necessitatibus, libero neque ullam molestiae ab, temporibus cupiditate hic illo blanditiis sapiente amet dolorum eveniet ipsum! Et repellat fugiat saepe!",
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti beatae necessitatibus, libero neque ullam molestiae ab, temporibus cupiditate hic illo blanditiis sapiente amet dolorum eveniet ipsum! Et repellat fugiat saepe!",
+  ];
+
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const accordionData = [
-    { title: "Accordion Item #1", content: "This is the first item's accordion body." },
-    { title: "Accordion Item #2", content: "This is the second item's accordion body." },
-    { title: "Accordion Item #3", content: "This is the third item's accordion body." },
-    { title: "Accordion Item #4", content: "This is the fourth item's accordion body." },
-    { title: "Accordion Item #5", content: "This is the fifth item's accordion body." },
-  ];
-
   return (
-    <div className="accordion" id="accordionExample">
-      {accordionData.map((item, index) => (
-        <div className="accordion-item" key={index}>
-          <h2 className="accordion-header" id={`heading${index}`}>
-            <button
-              className={`accordion-button ${activeIndex === index ? "" : "collapsed"}`}
-              type="button"
-              onClick={() => toggleAccordion(index)}
-            >
-              {item.title}
-            </button>
-          </h2>
-          <div
-            id={`collapse${index}`}
-            className={`accordion-collapse collapse ${activeIndex === index ? "show" : ""}`}
-            aria-labelledby={`heading${index}`}
-            data-bs-parent="#accordionExample"
+    <div className="accordion-container p-3">
+      <h2 className='event-name mt-3 mb-3 text-center'>Things to be <span className='span-el'>Known</span></h2>
+      {questions.map((question, index) => (
+        <div className="accordion" key={index}>
+          <button
+            className={`menu-button ${activeIndex === index ? "open" : ""}`}
+            onClick={() => toggleAccordion(index)}
           >
-            <div className="accordion-body">
-              <strong>{item.content}</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci officiis distinctio porro, perferendis quas recusandae ipsa unde eaque eveniet.
-            </div>
+            {question}
+            <span className="icon">{activeIndex === index ? "-" : "+"}</span>
+          </button>
+          <div
+            className="content mt-1"
+            style={{
+              height: activeIndex === index ? "auto" : "0",
+              overflow: "hidden",
+            }}
+          >
+            <p>{contentText[index]}</p>
           </div>
         </div>
       ))}
     </div>
   );
 };
+
+export default AccordionMenu;

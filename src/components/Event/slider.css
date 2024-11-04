@@ -102,7 +102,7 @@
   
   .slider-button:hover,
   .button-mob:hover {
-    border: solid;
+    border: solid 2px #e4e4e4;
     color: black;
     text-decoration: none;
     border-width: 1px;

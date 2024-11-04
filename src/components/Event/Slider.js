@@ -40,7 +40,7 @@ const Slider = () => {
             <div className="des">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
             </div>
-            <Link to="/chaitra" className='slider-button'>See More</Link>
+            <Link to="/events/vasista2k24" className='slider-button'>See More</Link>
           </div>
         </div>
         <div
@@ -52,7 +52,7 @@ const Slider = () => {
             <div className="des">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
             </div>
-            <Link to="/chaitra" className='slider-button'>See More</Link>
+            <Link to="/events/chaitra2k24" className='slider-button'>See More</Link>
           </div>
         </div>
         <div
@@ -64,7 +64,7 @@ const Slider = () => {
             <div className="des">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
             </div>
-            <Link to="/chaitra" className='slider-button'>See More</Link>
+            <Link to="/events/pramidha2k24" className='slider-button'>See More</Link>
           </div>
         </div>
         <div
@@ -76,7 +76,7 @@ const Slider = () => {
             <div className="des">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
             </div>
-            <Link to="/chaitra" className='slider-button'>See More</Link>
+            <Link to="/events/vasista2k23" className='slider-button'>See More</Link>
           </div>
         </div>
         <div
@@ -88,7 +88,7 @@ const Slider = () => {
             <div className="des">
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
             </div>
-            <Link to="/chaitra" className='slider-button'>See More</Link>
+            <Link to="/events/chaitra2k23" className='slider-button'>See More</Link>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@ const Slider = () => {
                   <div className="des-mob">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
                   </div>
-                  <Link to="/chaitra" class="button-mob">See More</Link>
+                  <Link to="/events/chaitra2k24" class="button-mob">See More</Link>
                 </div>
           </div>
           <div className="carousel-item">
@@ -135,7 +135,7 @@ const Slider = () => {
                   <div className="des-mob">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
                   </div>
-                  <Link to="/chaitra" class="button-mob">See More</Link>
+                  <Link to="/events/pramidha2k24" class="button-mob">See More</Link>
                 </div>
           </div>
           <div className="carousel-item">
@@ -149,7 +149,7 @@ const Slider = () => {
                   <div className="des-mob">
                     Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, eum!
                   </div>
-                  <Link to="/chaitra" class="button-mob">See More</Link>
+                  <Link to="/events/vasista2k23" class="button-mob">See More</Link>
                 </div>
           </div>
         </div>

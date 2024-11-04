@@ -151,7 +151,7 @@ import './navbar.css'; // Importing the styles
 import ProfileMenu from './profile';
 import { AppContext } from '../context/Context';
 
-const drawerWidth = 280;
+const drawerWidth = 0;
 const navItems = ['Home', 'Events', 'Transactions', 'Our Services', 'About Us'];
 // const isLoged = true;
 
@@ -218,7 +218,7 @@ function DrawerAppBar(props) {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar component="nav" className="bg-orange">
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', height: '100px' }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', height: '80px' }}>
           {/* Left side: Logo */}
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <IconButton
@@ -269,7 +269,7 @@ function DrawerAppBar(props) {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 3 }}>
+      <Box component="main" sx={{ p: 1 }}>
         <Toolbar />
       </Box>
     </Box>

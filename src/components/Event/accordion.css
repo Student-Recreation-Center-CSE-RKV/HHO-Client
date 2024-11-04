@@ -1,50 +1,45 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+
+.accordion-container {
+  width: 80vw;
+  margin: 0 auto;
+}
+
+.menu-button {
+  width: 100%;
+  padding: 10px 20px;
+  margin-top: 4px;
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  background-color: #ffddaa;
+  cursor: pointer;
+  border-radius: 4px;
+  border: solid 3px #ffd7aa;
+  outline: none;
+}
+.menu-button:focus {
+  outline: none; 
+}
+.menu-button:hover {
+  background-color: #ffffff;
   
-  .accordion {
-    max-width: 600px;
-    margin: 50px auto;
-    box-shadow: 0 2px 25px rgba(110, 130, 208, 0.18);
-    border-radius: 5px; /* Add some rounding to the corners */
-    overflow: hidden; /* Ensure content does not overflow */
-  }
-  
-  .accordion-item {
-    border: none; /* Remove borders between items */
-  }
-  
-  .accordion-button {
-    background-color: #01645d; /* Primary color */
-    color: #fff; /* Text color */
-    border: none; /* Remove borders */
-    border-radius: 0; /* Remove border radius for a clean look */
-    transition: background-color 0.3s ease; /* Smooth transition */
-  }
-  
-  .accordion-button:focus {
-    box-shadow: none; /* Remove default focus shadow */
-  }
-  
-  .accordion-button:hover {
-    background-color: #25aca3; /* Lighter shade on hover */
-  }
-  
-  .accordion-button.collapsed {
-    background-color: #014c4d; /* Darker shade for collapsed button */
-  }
-  
-  .accordion-body {
-    background-color: #f8f9fa; /* Light background for body */
-    padding: 20px; /* Add padding */
-    color: #333; /* Text color */
-    border-top: 1px solid #e9ecef; /* Border on top of the body */
-  }
-  
-  /* Optional: Customize the transition effect for the accordion collapse */
-  .accordion-collapse {
-    transition: max-height 0.5s ease; /* Smooth collapse transition */
-  }
-  
+}
+
+.icon {
+  font-size: 26px;
+  transition: 0.4s;
+}
+
+.menu-button.open .icon {
+  transform: rotate(45deg);
+}
+
+.content {
+  font-size: 16px;
+  padding: 0 26px;
+  background-color: #ffffff;
+  transition: 0.4s;
+  overflow: hidden;
+}

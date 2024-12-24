@@ -136,7 +136,7 @@ const ProfileBanner = () => {
       
 
       {/* Change Password Button positioned at the bottom right */}
-      <Button
+      {/* <Button
         variant="contained"
         sx={{
           backgroundColor: "#fa9a34", // Set the button background color
@@ -159,7 +159,7 @@ const ProfileBanner = () => {
         onClick={handleClickOpen} // Open modal on button click
       >
         Change Password
-      </Button>
+      </Button> */}
 
       {/* Modal for Change Password */}
       <Dialog

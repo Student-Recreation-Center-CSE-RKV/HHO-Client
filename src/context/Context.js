@@ -63,8 +63,9 @@ export const AppProvider = ({ children }) => {
           const data = response.data.data;
           setUserData(data);
           console.log(data);
-          localStorage.setItem('role',data?.role);
-          setRole(data?.role);
+          
+          localStorage.setItem('role',data.role);
+          setRole(data.role);
           // return response.data;
         } catch (error) {
           console.error('Error fetching data:', error);

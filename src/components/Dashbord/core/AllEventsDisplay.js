@@ -13,6 +13,7 @@ function AllEventsDisplay() {
       .get('http://localhost:8000/api/events') // Replace with your backend API
       .then((response) => {
         setEvents(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error('Error fetching events:', error);

@@ -225,7 +225,7 @@ function EventDetails() {
           </Card>
         </Grid>
         <Grid item xs={12} md={6} lg={4}>
-          <Typography variant="h3" gutterBottom>
+          <Typography variant="h4" gutterBottom>
             {editedEvent.eventTitle}
           </Typography>
           <Typography variant="h6" color="textSecondary" paragraph>

@@ -28,7 +28,7 @@ const theme = createTheme({
 });
 
 function NewDonation() {
-  const{token} = useContext(AppContext);
+  const{token,apiUrl} = useContext(AppContext);
   const [formData, setFormData] = useState({
     name: "",
     title: "",
@@ -101,7 +101,7 @@ function NewDonation() {
         };
         await axios
           .post(
-            "http://localhost:8000/api/donations/create",
+            `${apiUrl}:8000/api/donations/create`,
             finalFormData,
             { headers }
           )

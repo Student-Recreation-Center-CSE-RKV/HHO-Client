@@ -6,14 +6,14 @@ import axios from 'axios';
 import { AppContext } from '../../context/Context';
 function Team() {
     const [teamData, setTeamData] = useState(null);
-    const{token} = useContext(AppContext);
+    const{token,apiUrl} = useContext(AppContext);
 
     useEffect(() => {
         // const headers = {
         //     'Content-Type': 'application/json',
         //     'Authorization': `Bearer ${token}`
         // }
-        axios.get("http://localhost:8000/api/users/offUsers/").then(res=>{
+        axios.get(`${apiUrl}/api/users/offUsers/`).then(res=>{
             console.log(res.data);
             setTeamData(res.data);
             setTeamData(res.data.filter((item, index) => {

@@ -12,7 +12,7 @@ import EditWindow from "./EditWindow";
 import DeleteWindow from "./DeleteWindow";
 import { AppContext } from "../../../../context/Context";
 const AllActivities = () => {
-  const { setAlertMsg, setOpen, setErrorOcc, token } = useContext(AppContext);
+  const { setAlertMsg, setOpen, setErrorOcc, token,apiUrl } = useContext(AppContext);
   const [activities, setActivities] = useState([]);
   const [selected, setSelected] = useState(null);
   const [editWindow, setEditWindow] = useState(false);
@@ -20,7 +20,7 @@ const AllActivities = () => {
 
   const fetchActivities = async () => {
     try {
-      const res = await axios.get("http://localhost:8000/api/activities/getAll");
+      const res = await axios.get(`${apiUrl}/api/activities/getAll`);
       setActivities(res.data.data);
     } catch (error) {
       console.log("Error fetching activities:", error);

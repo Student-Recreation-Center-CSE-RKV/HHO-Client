@@ -17,7 +17,7 @@ import axios from 'axios';
 
 function EventForm({subEventDetails,subEvents,setSubEventDetails,setSubEvents}) {
 
-  const{setAlertMsg,setErrorOcc,setOpen,token} = useContext(AppContext);
+  const{setAlertMsg,setErrorOcc,setOpen,token,apiUrl} = useContext(AppContext);
   const [eventDetails, setEventDetails] = useState({
     eventTitle: '',
     eventDescription:  '',
@@ -157,7 +157,7 @@ function EventForm({subEventDetails,subEvents,setSubEventDetails,setSubEvents}) 
             subEvents: subEvents
         }
         console.log(finalFormData);
-        await axios.post("http://localhost:8000/api/events/createEvent",finalFormData,{headers})
+        await axios.post(`${apiUrl}/api/events/createEvent`,finalFormData,{headers})
         .then((response)=>{
           console.log(response.data);
           setEventDetails({

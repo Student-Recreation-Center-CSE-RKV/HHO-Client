@@ -46,7 +46,7 @@ function NewTransaction() {
   // const [totalBalance, setTotalBalance] = React.useState(10000);
 
 
-  const { token, setAlertMsg, setOpen, setErrorOcc, transactions, setTransactions,setTotalBalance,totalBalance,donatedAmt,setDonatedAmt } = React.useContext(AppContext);
+  const { token, setAlertMsg, setOpen, setErrorOcc, transactions, setTransactions,setTotalBalance,totalBalance,donatedAmt,setDonatedAmt,apiUrl } = React.useContext(AppContext);
 
   const handleAmountChange = (e) => setAmount(e.target.value);
   const handleTransactionTypeChange = (e) => setTransactionType(e.target.value);
@@ -59,7 +59,7 @@ function NewTransaction() {
     console.log("donated:",donated);
     try {
       console.log(money);
-      const  res = await axios.post('http://localhost:8000/update-money', { amount: money,donated_amount:donated });
+      const  res = await axios.post(`${apiUrl}/update-money`, { amount: money,donated_amount:donated });
       console.log(res.data);
     } catch (error) {
       console.log(error.message);
@@ -117,7 +117,7 @@ function NewTransaction() {
         
         }
 
-        const response = await axios.post('http://localhost:8000/api/transactions/add-transaction', transactionData, { headers });
+        const response = await axios.post(`${apiUrl}/api/transactions/add-transaction`, transactionData, { headers });
 
         if (response.data) {
           setTransactions([...transactions, response.data]);

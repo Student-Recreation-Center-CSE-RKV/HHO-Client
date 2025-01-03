@@ -43,7 +43,7 @@ function PastTransactions() {
   const [searchType, setSearchType] = useState('amount');
   const [selectedDate, setSelectedDate] = useState('');
   const [transactionType, setTransactionType] = useState('');
-  const { token } = useContext(AppContext);
+  const { token,apiUrl } = useContext(AppContext);
 
   const[loading,setLoading] = useState(false);
   const[delLoading,setDelLoading] = useState(false);
@@ -75,7 +75,7 @@ function PastTransactions() {
     };
     
     const getTransactions = async () => {
-      const response = await axios.get('http://localhost:8000/api/transactions/get-all-transactions', { headers });
+      const response = await axios.get(`${apiUrl}/api/transactions/get-all-transactions`, { headers });
       setTransactions(response.data);
       setFilteredTransactions(response.data);
     };
@@ -171,11 +171,11 @@ function PastTransactions() {
     try {
       console.log("Token"+token);
       console.log(id + "in hadnl delte");
-      const response = await axios.delete(`http://localhost:8000/api/transactions/delete-transaction/${id}`, { headers });
+      const response = await axios.delete(`${apiUrl}/api/transactions/delete-transaction/${id}`, { headers });
       if (response.data) {
 
         const getTransactions = async () => {
-          const response = await axios.get('http://localhost:8000/api/transactions/get-all-transactions', { headers });
+          const response = await axios.get(`${apiUrl}/api/transactions/get-all-transactions`, { headers });
           setTransactions(response.data);
           setFilteredTransactions(response.data);
 
@@ -213,7 +213,7 @@ function PastTransactions() {
     setEditLoading(true);
     setTimeout(async()=>{
       try {
-        const response =  await axios.put(`http://localhost:8000/api/transactions/update-transaction/${transactionId}`, editData, { headers });
+        const response =  await axios.put(`${apiUrl}/api/transactions/update-transaction/${transactionId}`, editData, { headers });
         console.log(response);
         if(response.data){
           setAlertMsg("Transaction updated successfully");
@@ -221,7 +221,7 @@ function PastTransactions() {
           setOpen(true);
           setOpenEditModal(false); // Close the modal after updating
           // Optionally refresh transactions
-          const response = await axios.get('http://localhost:8000/api/transactions/get-all-transactions', { headers });
+          const response = await axios.get(`${apiUrl}/api/transactions/get-all-transactions`, { headers });
           setTransactions(response.data);
           setFilteredTransactions(response.data);
         }

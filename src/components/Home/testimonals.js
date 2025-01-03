@@ -1,16 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './testimonals.css'; 
 import axios from 'axios';
+import { AppContext } from '../../context/Context';
 
 const Testimonials = () => {
   const [testimonials, setTestimonials] = useState([]);
   const testimonialsRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-
+  const {apiUrl} = useContext(AppContext);
   useEffect(() => {
-    axios.get("http://localhost:8000/api/testimonials")
+    axios.get(`${apiUrl}/api/testimonials`)
       .then((res) => {
         setTestimonials(res.data);
         console.log(res.data);

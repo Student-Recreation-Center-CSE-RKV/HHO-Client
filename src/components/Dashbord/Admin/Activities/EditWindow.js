@@ -16,7 +16,7 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import axios from "axios";
 import LoadingAnimation from "../../../../components/LoadingAnimation";
 const EditItemDialog = ({ handleClose, activity }) => {
-  const {setAlertMsg,setOpen,token,setErrorOcc} = useContext(AppContext);
+  const {setAlertMsg,setOpen,token,setErrorOcc,apiUrl} = useContext(AppContext);
 
   const [btnText, setBtnText] = useState("Save");
   const [formData, setFormData] = useState({
@@ -71,7 +71,7 @@ const EditItemDialog = ({ handleClose, activity }) => {
       }
 
     }
-    await axios.put(`http://localhost:8000/api/activities/update/${activity._id}`,formData,{headers})
+    await axios.put(`${apiUrl}/api/activities/update/${activity._id}`,formData,{headers})
         .then((res) => {
           setAlertMsg("Activity Edited..");
           setOpen(true);

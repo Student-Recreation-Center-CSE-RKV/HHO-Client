@@ -12,7 +12,7 @@ import { useContext } from "react";
 import axios from "axios";
 
 const DeleteWindow = ({ testimonial, handleClose }) => {
-  const { setOpen, setAlertMsg,setErrorOcc,token } = useContext(AppContext);
+  const { setOpen, setAlertMsg,setErrorOcc,token,apiUrl } = useContext(AppContext);
 
   const handleConfirm = async() => {
 
@@ -22,7 +22,7 @@ const DeleteWindow = ({ testimonial, handleClose }) => {
     };
    await  axios
       .delete(
-        `http://localhost:8000/api/testimonials/deleteTestimonial/${testimonial._id}`,
+        `${apiUrl}/api/testimonials/deleteTestimonial/${testimonial._id}`,
         {headers}
       )
       .then((res) => {

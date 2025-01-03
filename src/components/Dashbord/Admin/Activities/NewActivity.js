@@ -7,7 +7,7 @@ import { useContext } from "react";
 import LoadingAnimation from "../../../../components/LoadingAnimation";
 const NewActivity = () => {
   const [btnText, setBtnText] = useState("Submit");
-  const { setAlertMsg, setOpen, setErrorOcc, token } = useContext(AppContext);
+  const { setAlertMsg, setOpen, setErrorOcc, token,apiUrl } = useContext(AppContext);
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -74,7 +74,7 @@ const NewActivity = () => {
         };
         await axios
           .post(
-            "http://localhost:8000/api/activities/create",
+            `${apiUrl}/api/activities/create`,
             {
               name: finalFormData.title,
               description: finalFormData.description,

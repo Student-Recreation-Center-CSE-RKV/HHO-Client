@@ -13,7 +13,7 @@ import {
 } from '@mui/material';
 import axios from "axios";
 const EditWindow = ({ testimonial, handleClose }) => {
-    const {setOpen,setAlertMsg,token,setErrorOcc} = useContext(AppContext);
+    const {setOpen,setAlertMsg,token,setErrorOcc,apiUrl} = useContext(AppContext);
   const [formData, setFormData] = useState({
     name: testimonial.name,
     rating: testimonial.rating,
@@ -35,7 +35,7 @@ const EditWindow = ({ testimonial, handleClose }) => {
       'Authorization': `Bearer ${token}`,
     };
 
-    await axios.put(`http://localhost:8000/api/testimonials/editTestimonial/${testimonial._id}`,formData,{headers}).then(res=>{
+    await axios.put(`${apiUrl}/api/testimonials/editTestimonial/${testimonial._id}`,formData,{headers}).then(res=>{
       setAlertMsg("Testimonial edited successfully...");
       handleClose("edit");
       setErrorOcc(false);

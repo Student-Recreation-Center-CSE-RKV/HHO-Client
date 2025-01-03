@@ -23,7 +23,7 @@ import AddIcon from '@mui/icons-material/Add';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import {AppContext} from '../../../context/Context';
 function EventDetails() {
-  const{setAlertMsg,setErrorOcc,setOpen} = useContext(AppContext);
+  const{setAlertMsg,setErrorOcc,setOpen,apiUrl} = useContext(AppContext);
   const location = useLocation();
   const navigate = useNavigate();
   const { event } = location.state || {};
@@ -120,7 +120,7 @@ function EventDetails() {
         ];
 
         await axios.put(
-          `http://localhost:8000/api/events/editEvent/${editedEvent._id}`,
+          `${apiUrl}/api/events/editEvent/${editedEvent._id}`,
           {
             ...editedEvent,
             subEvents: updatedSubEvents,
@@ -146,7 +146,7 @@ function EventDetails() {
         );
 
         await axios.put(
-          `http://localhost:8000/api/events/editEvent/${editedEvent._id}`,
+          `${apiUrl}/api/events/editEvent/${editedEvent._id}`,
           {
             ...editedEvent,
             subEvents: updatedSubEvents,
@@ -160,7 +160,7 @@ function EventDetails() {
       } else {
         console.log(editedEvent);
         await axios.put(
-          `http://localhost:8000/api/events/editEvent/${editedEvent._id}`,
+          `${apiUrl}/api/events/editEvent/${editedEvent._id}`,
           editedEvent
         );
         setAlertMsg('Event Updated Successfully');
@@ -178,7 +178,7 @@ function EventDetails() {
   const handleDeleteEvent = async () => {
     try {
       await axios.delete(
-        `http://localhost:8000/api/events/deleteEvent/${event._id}`
+        `${apiUrl}/api/events/deleteEvent/${event._id}`
       );
       navigate('/dashboard/events');
       setAlertMsg('Event deleted  Successfully');
@@ -196,7 +196,7 @@ function EventDetails() {
         (se) => se._id !== subEvent._id
       );
       await axios.put(
-        `http://localhost:8000/api/events/editEvent/${event._id}`,
+        `${apiUrl}/api/events/editEvent/${event._id}`,
         {
           ...editedEvent,
           subEvents: updatedSubEvents,

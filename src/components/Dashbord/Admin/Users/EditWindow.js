@@ -18,7 +18,7 @@ import LoadingAnimation from "../../../../components/LoadingAnimation";
 
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 const EditUserDialog = ({ onClose, user }) => {
-  const {setAlertMsg,setOpen,setErrorOcc,token} = useContext(AppContext);
+  const {setAlertMsg,setOpen,setErrorOcc,token,apiUrl} = useContext(AppContext);
   const [btnText, setBtnText] = useState("Save");
 
   const [formData, setFormData] = useState({
@@ -68,7 +68,7 @@ const EditUserDialog = ({ onClose, user }) => {
   
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/users/offUsers/updateUsers/${user._id}`,
+        `${apiUrl}/api/users/offUsers/updateUsers/${user._id}`,
         updatedData,{headers}
       );
       console.log(response.data);

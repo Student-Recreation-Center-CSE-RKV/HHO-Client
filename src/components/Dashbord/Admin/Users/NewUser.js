@@ -15,7 +15,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import axios from "axios";
 import LoadingAnimation from "../../../LoadingAnimation";
 const NewUser = () => {
-  const { setAlertMsg, setOpen, token, setErrorOcc } = useContext(AppContext);
+  const { setAlertMsg, setOpen, token, setErrorOcc,apiUrl } = useContext(AppContext);
   const [btnText, setBtnText] = useState("SUBMIT");
   const [formData, setFormData] = useState({
     image: "",
@@ -79,7 +79,7 @@ const NewUser = () => {
 
         console.log(formData);
         axios
-          .post("http://localhost:8000/api/users/offUsers/newUser", {...formData,image:imageUrl}, {
+          .post(`${apiUrl}/api/users/offUsers/newUser`, {...formData,image:imageUrl}, {
             headers,
           })
           .then((res) => {

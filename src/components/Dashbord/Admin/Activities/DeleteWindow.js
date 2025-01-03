@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import { AppContext } from "../../../../context/Context";
 const DeleteConfirmationDialog = ({ handleClose, activity }) => {
-  const {setAlertMsg,setOpen,token,setErrorOcc} = useContext(AppContext);
+  const {setAlertMsg,setOpen,token,setErrorOcc,apiUrl} = useContext(AppContext);
   return (
     <Dialog
       open={true}
@@ -39,7 +39,7 @@ const DeleteConfirmationDialog = ({ handleClose, activity }) => {
 
            await axios
               .delete(
-                `http://localhost:8000/api/activities/delete/${activity._id}`,{headers}
+                `${apiUrl}/api/activities/delete/${activity._id}`,{headers}
               )
               .then((res) => {
                 if(res.status === 200){

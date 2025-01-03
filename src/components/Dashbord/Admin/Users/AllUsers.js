@@ -18,7 +18,7 @@ import { AppContext } from "../../../../context/Context.js";
 const AllUsers = () => {
   const [users, setUsers] = useState();
   const [deleteWindow, setDeleteWindow] = useState(false);
-  const { token } = useContext(AppContext);
+  const { token ,apiUrl} = useContext(AppContext);
   const headers = {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
@@ -27,7 +27,7 @@ const AllUsers = () => {
   const getUserData = async () => {
     try {
       await axios
-        .get("http://localhost:8000/api/users/offUsers/", { headers })
+        .get(`${apiUrl}/api/users/offUsers/`, { headers })
         .then((res) => {
           setUsers(res.data);
           console.log(res.data);

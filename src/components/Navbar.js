@@ -15,19 +15,19 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+// Removed unused Button import
 import './navbar.css'; // Importing the styles
 import ProfileMenu from './profile';
 import { AppContext } from '../context/Context';
 
-const drawerWidth = 0;
+const drawerWidth = 240; // Set a proper drawer width
 const navItems = ['Home', 'Events', 'Transactions', 'Our Services', 'About Us'];
 // const isLoged = true;
 
 
 function DrawerAppBar(props) {
 
-  const{token,setToken} = React.useContext(AppContext);
+  const { token } = React.useContext(AppContext);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 

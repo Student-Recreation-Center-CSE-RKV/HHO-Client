@@ -4,7 +4,7 @@ import axios from "axios";
 import LoadingAnimation from "../../../../components/LoadingAnimation";
 import { AppContext } from "../../../../context/Context";
 function NewTestimonial() {
-  const { setAlertMsg, setOpen, setErrorOcc, token } = useContext(AppContext);
+  const { setAlertMsg, setOpen, setErrorOcc, token,apiUrl } = useContext(AppContext);
   const [name, setName] = useState("");
   const [discipline, setDiscipline] = useState("");
   const [rating, setRating] = useState(0);
@@ -32,7 +32,7 @@ function NewTestimonial() {
 
       await axios
         .post(
-          "http://localhost:8000/api/testimonials/createTestimonial",
+          `${apiUrl}/api/testimonials/createTestimonial`,
           formData,
           { headers }
         )

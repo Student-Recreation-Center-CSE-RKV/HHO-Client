@@ -5,7 +5,7 @@ import axios from "axios";
 import { AppContext } from "../../../context/Context";
 
 const AllDonations = () => {
-  const { token, setAlertMsg, setErrorOcc, setOpen } = useContext(AppContext);
+  const { token, setAlertMsg, setErrorOcc, setOpen,apiUrl } = useContext(AppContext);
   const [donations, setDonations] = useState([]);
   const [editLoading, setEditLoading] = useState({});
   const [deleteLoading, setDeleteLoading] = useState({});
@@ -51,7 +51,7 @@ const AllDonations = () => {
         };
       }
 
-      await axios.put(`http://localhost:8000/api/donations/update/${id}`, editDonation, {
+      await axios.put(`${apiUrl}/api/donations/update/${id}`, editDonation, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -77,7 +77,7 @@ const AllDonations = () => {
     console.log("Delete donation with ID:", id);
 
     try {
-      await axios.delete(`http://localhost:8000/api/donations/delete/${id}`, {
+      await axios.delete(`${apiUrl}//api/donations/delete/${id}`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -102,7 +102,7 @@ const AllDonations = () => {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/donations/getall");
+        const response = await axios.get(`${apiUrl}/api/donations/getall`);
         setDonations(response.data);
       } catch (error) {
         console.error("Error fetching donations:", error);

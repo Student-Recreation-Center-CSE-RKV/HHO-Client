@@ -11,7 +11,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 
 export const AppProvider = ({ children }) => {
 
-
+  const apiUrl = "http://localhost:8000";
   const [token, setToken] = useState(localStorage.getItem('token') || null);
   const[open,setOpen] = useState();
   const[severity,setSeverity] = useState("");
@@ -37,7 +37,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     async function getEvents() {
       try {
-        const response = await axios.get('http://localhost:8000/api/events');
+        const response = await axios.get(`${apiUrl}/api/events`);
         const data = response.data;
         setAllEvents(data);
         console.log(data);
@@ -54,7 +54,7 @@ export const AppProvider = ({ children }) => {
     async function getUserData(){
       if(token){
         try {
-          const response = await axios.get('http://localhost:8000/api/users/offusers/profile', {
+          const response = await axios.get(`${apiUrl}/api/users/offusers/profile`, {
             headers: {
               Authorization: `Bearer ${token}`,
               'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export const AppProvider = ({ children }) => {
   useEffect(() => {
     const getMoney = async()=>{
         try {
-          const response = await axios.get('http://localhost:8000/get-money');
+          const response = await axios.get(`${apiUrl}/get-money`);
           const data = response.data;
           console.log("amount: ",data.money[0].amount);
           // localStorage.setItem('totalBalance', data.money[0].amount);
@@ -105,7 +105,7 @@ export const AppProvider = ({ children }) => {
     setOpen(false); // Close the Snackbar
   };
   return (
-    <AppContext.Provider value={{donatedAmt,setDonatedAmt,token,setToken,user,setUser,open,setOpen,handleClose,alertMsg,setAlertMsg,userData,setUserData,role,setRole,transactions , setTransactions,filteredTransactions, setFilteredTransactions,severity,setSeverity,errorOcc,setErrorOcc,allEvents,setAllEvents,totalBalance,setTotalBalance}}>
+    <AppContext.Provider value={{donatedAmt,setDonatedAmt,token,setToken,user,setUser,open,setOpen,handleClose,alertMsg,setAlertMsg,userData,setUserData,role,setRole,transactions , setTransactions,filteredTransactions, setFilteredTransactions,severity,setSeverity,errorOcc,setErrorOcc,allEvents,setAllEvents,totalBalance,setTotalBalance,apiUrl}}>
       {children}
     </AppContext.Provider>
   );

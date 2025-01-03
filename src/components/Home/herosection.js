@@ -6,7 +6,7 @@ import axios from 'axios';
 import { AppContext } from '../../context/Context';
 
 export default function HeroSection() {
-  const { setAlertMsg, setErrorOcc, setOpen } = useContext(AppContext);
+  const { setAlertMsg, setErrorOcc, setOpen,apiUrl } = useContext(AppContext);
   const sectionRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -28,7 +28,7 @@ export default function HeroSection() {
     e.preventDefault();
     setLoading(true); // Set loading to true when form is submitted
     try {
-      const response = await fetch("http://localhost:8000/send-email", {
+      const response = await fetch(`${apiUrl}/send-email`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

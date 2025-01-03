@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import EditWindow from "./EditWindow.js";
 import DeleteWindow from "./DeleteWindow.js";
@@ -15,20 +15,22 @@ import {
   Box,
 } from "@mui/material";
 import "./AllTestimonials.css";
+import { AppContext } from "../../../../context/Context.js";
 const AllTestimonials = () => {
   const [testimonials, setTestimonials] = useState();
+  const {apiUrl} = useContext(AppContext)
   const [selected, setSelected] = useState();
   const [editWindow, setEditWindow] = useState(false);
   const [deleteWindow, setDeleteWindow] = useState(false);
   useEffect(() => {
-    axios.get("http://localhost:8000/api/testimonials/").then((res) => {
+    axios.get(`${apiUrl}/api/testimonials/`).then((res) => {
       console.log(res.data);
       setTestimonials(res.data);
     });
   }, []);
   const handleClose = async(type) => {
     type === "edit" ? setEditWindow(false) : setDeleteWindow(false);
-   await axios.get("http://localhost:8000/api/testimonials/").then((res) => {
+   await axios.get(`${apiUrl}/api/testimonials/`).then((res) => {
       console.log(res.data);
       setTestimonials(res.data);
     });
@@ -40,13 +42,15 @@ const AllTestimonials = () => {
       <div>
         <table className="testimonial-table" border="1px">
           <thead>
-            <td>S.No</td>
-            <td>Name</td>
-            <td>Discipline</td>
-            <td>Rating</td>
-            <td>Message</td>
+            <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Discipline</th>
+            <th>Rating</th>
+            <th>Message</th>
 
-            <td>Actions</td>
+            <th>Actions</th>
+            </tr>
           </thead>
           <tbody>
             {testimonials &&

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import { Box, Typography, Card, CardContent, CardMedia, IconButton, responsiveFontSizes} from '@mui/material';
 import { useEffect,useState,useRef } from 'react';
@@ -11,6 +11,7 @@ import 'swiper/css/navigation'; // Navigation styles
 
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { AppContext } from '../../context/Context';
 
 
 
@@ -18,7 +19,7 @@ const Activities = () => {
   const [activities,setActivities] = useState([])
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
+  const {apiUrl} = useContext(AppContext);
     useEffect(()=>{
       setTimeout(() => {
         if (prevRef.current && nextRef.current) {
@@ -32,7 +33,7 @@ const Activities = () => {
     useEffect(() => {
         const fetchActivities = async() => {
             try {
-                const res = await axios.get("http://localhost:8000/api/activities/getAll");
+                const res = await axios.get(`${apiUrl}/api/activities/getAll`);
                 setActivities(res.data.data);
             } catch (error) {
                 console.log("Error fetching activities:", error);

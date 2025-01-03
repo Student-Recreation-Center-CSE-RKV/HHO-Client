@@ -12,6 +12,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 // import TopRightAlert from '../../../components/Alert';
 function LoginPage() {
+  const {apiUrl} = useContext(AppContext);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [email, setEmail] = useState();
@@ -42,7 +43,7 @@ function LoginPage() {
       setOpen(true);
     } else {
       try {
-        const response = await axios.post('http://localhost:8000/api/users/offusers/login', {
+        const response = await axios.post(`${apiUrl}/api/users/offusers/login`, {
           email,
           password,
         });
